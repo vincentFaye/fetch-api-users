@@ -2,7 +2,7 @@
   <div>
     <div class="users-wrapper">
       <div v-if="loading && loadingImg">loading...</div>
-      <div v-else class="users">
+      <div v-else-if="users.length && photos.length" class="users">
         <h1>Users</h1>
         <div v-for="(user, index) in users" :key="`user-${index}`" style="margin-top: 50px; margin-bottom: 50px;">
           <user :user="user" :img="`${photos[index+1].url}`"/>
