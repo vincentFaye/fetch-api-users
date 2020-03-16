@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="users-wrapper">
-      <div v-if="loading && loadingImg">loading...</div>
+      <div v-if="loading || loadingImg" class="loader"></div>
       <div v-else-if="users.length && photos.length" class="users">
         <h1>Users</h1>
         <div v-for="(user, index) in users" :key="`user-${index}`" style="margin-top: 50px; margin-bottom: 50px;">
@@ -81,5 +81,22 @@ export default {
     background-color: rgb(229, 233, 226);
     border-radius: 5px;
     position: relative;
+  }
+  .loader {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--accent-color);
+    position: absolute;
+    transform: translate3d(50%, 50%, 0);
+    animation: spin 1s ease-in-out infinite;
+    top: 5%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg)}
+    100% { transform: rotate(720deg)}
   }
 </style>
